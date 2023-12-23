@@ -34,6 +34,10 @@ To access local files you can mount volumes into the docker container.  The `fla
 
 - Use Git Bash to run the `build.sh` script.
 
+## Docker Compose
+
+> Coming soon
+
 ## Screenshots
 
 With a Windows VM on macOS running MS SQL Server, the docker `iics-secure-agent` is launched on macOS.
