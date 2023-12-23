@@ -25,3 +25,32 @@ IICS_TOKEN=<the secure agent token>
 To access local files you can mount volumes into the docker container.  The `flatfiles` folder is automatically mounted to the host.
 
 > Note that to access the host from the docker secure agent you will need to use `host.docker.internal` in place of `localhost`.
+
+## On Windows
+
+- Requires Git and Git Bash installed, as well as Docker Desktop
+
+- Before cloning the repository on Windows ensure git autoCRLF is turned off `git config --global core.autocrlf false`.  
+
+- Use Git Bash to run the `build.sh` script.
+
+## Screenshots
+
+With a Windows VM on macOS running MS SQL Server, the docker `iics-secure-agent` is launched on macOS.
+
+![Windows VM running MSSQL](examples/mssql-windowsvm.png)
+
+![Docker Agent](examples/docker-launch.png)
+
+In the IICS Runtime console the agent is running:
+
+![Docker Agent Running](examples/iics-status.png)
+
+And a connection can be made to the MSSQL running on the Windows VM:
+
+![Successful Connection vis Docker Agent](examples/mssql-success.png)
+
+The container can also be built and run on Windows via Docker:
+
+![Windows Build in Git Bash](examples/windows-build.png)
+
