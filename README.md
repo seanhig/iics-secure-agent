@@ -1,6 +1,6 @@
-# Unofficial Informatica IICS Secure Agent - Dockerized
+# Unofficial IICS Secure Agent Container
 
-Build your own container based on the latest `agent64_install` for linux.
+Build an IICS docker container based on the latest `agent64_install` for linux.
 
 ## Usage
 
