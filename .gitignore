@@ -3,5 +3,6 @@ agent64*
 scratch
 flatfiles/**
 !flatfiles/README.md
+!flatfiles/Sales.csv
 **/.DS_Store
 
