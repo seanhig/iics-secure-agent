@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+
+  iics-secure-agent:
+    container_name: iics-secure-agent
+    image: local/iics-secure-agent:latest
+    restart: always
+    volumes:
+      - "./flatfiles:/flatfiles"
+
+  mssql:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "iics"
+    ports:
+      - 1433:1433
+    volumes:
+      - sql-server-volume:/var/opt/mssql
+
+  mysql:
+    image: mysql:latest
+    hostname: mysql
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: call-center
+      MYSQL_USER: iics
+      MYSQL_PASSWORD: iics
+    volumes:
+      - "./mysql/custom-config.cnf:/etc/mysql/conf.d/custom-config.cnf"
+
+volumes:
+  sql-server-volume:
+
+

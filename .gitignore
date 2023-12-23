@@ -1,3 +1,7 @@
 agent64*
-env.local
+.env
 scratch
+flatfiles/**
+!flatfiles/README.md
+**/.DS_Store
+

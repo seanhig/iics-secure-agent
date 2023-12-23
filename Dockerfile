@@ -27,12 +27,15 @@ RUN mkdir -p /installer
 COPY agent64* /installer
 COPY src/bootstrap.sh /
 
+RUN mkdir -p /extras
+COPY src/mysql-connector-java-8.0.12.jar /extras/
+
 RUN chmod +x /bootstrap.sh
 RUN chmod +x /installer/agent64*
 
 USER $USER_UID:$USER_GID
 WORKDIR /
-RUN umask u=rwx,g=rwx,o=rwx
+RUN umask u=rwx,g=rwx,o=rw
 RUN echo -ne '\n\n\n' | /installer/agent64*
 
 ENTRYPOINT ["bash", "bootstrap.sh"]

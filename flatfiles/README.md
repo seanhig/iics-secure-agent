@@ -1,0 +1,1 @@
+Create a flat file connection to the container `/flatfiles` folder and it will link to this directory.
