@@ -21,14 +21,16 @@ ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
-RUN apt-get install -y inotify-tools
+RUN apt-get install -y inotify-tools wget
 
 RUN mkdir -p /installer
 COPY agent64* /installer
 COPY src/bootstrap.sh /
 
 RUN mkdir -p /extras
-COPY src/mysql-connector-java-8.0.12.jar /extras/
+WORKDIR /extras
+RUN wget https://downloads.mysql.com/archives/get/p/3/file/mysql-connector-java-8.0.12.tar.gz
+RUN tar -xf mysql-connector-java-8.0.12.tar.gz
 
 RUN chmod +x /bootstrap.sh
 RUN chmod +x /installer/agent64*

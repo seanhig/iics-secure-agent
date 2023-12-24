@@ -28,7 +28,7 @@ then
   sleep 300
 
   echo "Delayed Install of MySQL driver (after services download and install)..."
-  cp /extras/*.jar $APP_LOC/apps/Data_Integration_Server/ext/drivers/
+  cp /extras/mysql-connector-java-8.0.12/mysql-connector-java-8.0.12.jar $APP_LOC/apps/Data_Integration_Server/ext/drivers/
 
 fi
 
