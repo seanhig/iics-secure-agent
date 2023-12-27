@@ -2,9 +2,18 @@
 
 Build an IICS docker container based on the latest `agent64_install` for linux.
 
+## Requirements
+
+- Docker or [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- A Bash Shell
+- The Informatica `agent64*.bin` for Linux
+- Git (or a download of this repo)
+
 ## Usage
 
-1. Download the IICS Secure Agent for Linux and place it in the root directory of this repo/folder with the `build.sh` script. 
+> These steps assume this repo has been cloned or copied locally.  Make sure to open a bash shell to the local folder to complete the steps.
+
+1. Download the IICS Secure Agent for Linux and place it in the root directory of this local repo/folder where you find the `build.sh` script. 
 
 > This will generally be a file like `agent64_install_ng_ext6713.bin`
 
