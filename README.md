@@ -19,6 +19,11 @@ Build an IICS docker container based on the latest `agent64_install` for linux.
 
 2. Build the docker container with `bash build.sh`.  The default is to build a docker image tagged `local/iics-secure-agent`.
 
+__build.sh__
+```
+docker build -t local/iics-secure-agent . --no-cache
+```
+
 3. Copy the `.env.sample` file to `.env` and add the correct values for your environment.
 
 ```
@@ -28,6 +33,15 @@ IICS_TOKEN=<the secure agent token>
 ```
 
 4. Launch the docker secure agent with `bash run.sh`.  This will use the values from the `.env` file to configure the agent.
+
+__run.sh__
+```
+docker run --name iics-secure-agent \
+  --env-file .env \
+  -h iics-docker-agent \
+  -v ./flatfiles:/flatfiles \
+  -d local/iics-secure-agent:latest
+```
 
 5. Monitor the agent in the docker logs.
 
@@ -41,11 +55,21 @@ To access local files you can mount volumes into the docker container.  The `fla
 
 - Before cloning the repository on Windows ensure git autoCRLF is turned off `git config --global core.autocrlf false`.  
 
-- Use Git Bash to run the `build.sh` script.
+- Use Git Bash to run the `build.sh` and `run.sh` scripts.
 
 ## Docker Compose
 
-> Coming soon
+A sample `docker-compose` file is provided.  It uses the same [.env](.env.sample) file environment variable settings.  
+
+The stack includes MS SQL Server and MySQL along with this IICS secure agent container.
+
+`bash compose.sh` will launch the `iics-secure-docker-agent` stack.
+
+or
+
+`docker-compose -p "iics_agent_stack" up -d`
+
+> The compose stack is good for completing Informatica training sessions
 
 ## Screenshots
 

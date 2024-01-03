@@ -3,9 +3,14 @@ version: '3.8'
 services:
 
   iics-secure-agent:
-    container_name: iics-secure-agent
+    container_name: iics-secure-docker-agent
+    hostname: iics-secure-docker-agent
     image: local/iics-secure-agent:latest
     restart: always
+    environment:
+      IICS_RUNTIME_NAME: "${IICS_RUNTIME_NAME}"
+      IICS_TENANT_NAME: "${IICS_TENANT_NAME}"
+      IICS_TOKEN: "${IICS_TOKEN}"
     volumes:
       - "./flatfiles:/flatfiles"
 
@@ -15,7 +20,7 @@ services:
     restart: always
     environment:
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: "iics"
+      SA_PASSWORD: "${MSSQL_SA_PASSWORD}"
     ports:
       - 1433:1433
     volumes:
@@ -26,10 +31,10 @@ services:
     hostname: mysql
     container_name: mysql
     ports:
-      - "3306:3306"
+      - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: mysql
-      MYSQL_DATABASE: call-center
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: iics
       MYSQL_USER: iics
       MYSQL_PASSWORD: iics
     volumes:
