@@ -14,7 +14,7 @@ services:
     volumes:
       - "./flatfiles:/flatfiles"
 
-  mssql:
+  sql-server:
     container_name: sql-server
     image: mcr.microsoft.com/mssql/server:2019-latest
     restart: always

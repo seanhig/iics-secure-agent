@@ -71,7 +71,28 @@ or
 
 > The compose stack is good for completing Informatica training sessions
 
-## Screenshots
+### IICS Stack Usage
+
+Once the `docker-compose` stack is up, it will show in docker desktop:
+![IICS Compose Stack](examples/iics-agent-stack.jpg)
+
+[Azure Data Studio](https://azure.microsoft.com/en-ca/products/data-studio) is a good way to interact with the [SQL Server Docker Container](https://hub.docker.com/_/microsoft-mssql-server).  Informatica sample `.txt` and `.csv` files can be loaded much like with the Windows SQL Server Studio.
+
+> Data Studio is built on the VS Code platform.
+
+![Azure Data Studio Import](examples/azure-studio-import.jpg)
+
+It is possible to perform a complete Informatica Lab setup using this stack:
+
+![Azure Data Studio Lab Setup](examples/azure-studio-complete.jpg)
+
+Data Studio can be used to connect to, and query, a wide variety of databases, especially those running in containers.
+
+![Azure Data Studio Lab Query](examples/azure-studio-query-container.jpg)
+
+__Note:__ when connecting from the secure agent to database containers in the stack, use the names referenced in the stack as hostnames for connection.  Eg. `sql-server:1433` and `mysql:3306`.
+
+## Additional Screenshots
 
 With a Windows VM on macOS running MS SQL Server, the docker `iics-secure-agent` is launched on macOS.
 
