@@ -8,20 +8,23 @@ ARG USER_GID=$USER_UID
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
     #
-    # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
     && apt-get update \
     && apt-get install -y sudo \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
+# Install JRE
 RUN apt update && apt-get -y install openjdk-17-jre
 
+# Required for PostgreSQL
 RUN apt-get install -y locales locales-all
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
-RUN apt-get install -y inotify-tools wget
+# Without libidn agent will throw DMT errors:
+# https://knowledge.informatica.com/s/article/Data-Integration-tasks-fail-with-the-error-error-while-loading-shared-libraries-libidn-so-11-cannot-open-shared-object-file-No-such-file-or-directory?language=en_US
+RUN apt-get install -y wget libidn11 libidn11-dev libidn11-java
 
 RUN mkdir -p /installer
 COPY agent64* /installer
