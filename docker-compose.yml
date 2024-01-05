@@ -2,9 +2,9 @@ version: '3.8'
 
 services:
 
-  iics-secure-agent:
-    container_name: iics-secure-docker-agent
-    hostname: iics-secure-docker-agent
+  iics-docker-agent:
+    container_name: iics-docker-agent
+    hostname: iics-docker-agent
     image: local/iics-secure-agent:latest
     restart: always
     environment:

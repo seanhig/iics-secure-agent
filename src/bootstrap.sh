@@ -12,8 +12,11 @@ sleep 15
 
 APP_LOC=/home/iics-agent/infaagent
 APP_LOGFILE=$APP_LOC/apps/Common_Integration_Components/logs/*/app.log
+
 DI_FOLDER=$APP_LOC/apps/Data_Integration_Server
 DI_DRIVER_FOLDER=$DI_FOLDER/ext/drivers/
+
+TOMCAT_LOGFILE=$DI_FOLDER/logs/tomcat/tomcat*.log
 
 if [ ! -f $APP_LOGFILE ]
 then 
@@ -32,7 +35,6 @@ then
 
   while [ ! -e ${DI_FOLDER} ];
   do
-    echo -n "."
     sleep 5
   done
   echo ""
@@ -47,11 +49,16 @@ echo "Waiting for the app.log [${APP_LOGFILE}]"
 
 while [ ! -e ${APP_LOGFILE} ];
 do
-  echo -n "."
   sleep 5
 done
 echo ""
 
-cat $APP_LOGFILE
-tail -f $APP_LOGFILE
+echo "Waiting for the tomcat.log [${TOMCAT_LOGFILE}]"
+while [ ! -e ${TOMCAT_LOGFILE} ];
+do
+  sleep 5
+done
+echo ""
+
+tail -f $APP_LOGFILE $TOMCAT_LOGFILE
 sleep infinity 
