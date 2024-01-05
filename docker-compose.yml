@@ -12,6 +12,7 @@ services:
       IICS_TENANT_NAME: "${IICS_TENANT_NAME}"
       IICS_TOKEN: "${IICS_TOKEN}"
     volumes:
+      - iics-agent-volume:/home/iics-agent
       - "./flatfiles:/flatfiles"
 
   sql-server:
@@ -38,9 +39,11 @@ services:
       MYSQL_USER: iics
       MYSQL_PASSWORD: iics
     volumes:
-      - "./mysql/custom-config.cnf:/etc/mysql/conf.d/custom-config.cnf"
+      - mysql-volume:/var/lib/mysql
 
 volumes:
+  iics-agent-volume:
   sql-server-volume:
+  mysql-volume:
 
 
