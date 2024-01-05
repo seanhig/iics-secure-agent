@@ -1,1 +1,3 @@
-Create a flat file connection to the container `/flatfiles` folder and it will link to this directory.
+# Flatfiles Folder
+
+Place the `IICS Lab Files` in this director and it will be availble to the `iics-docker-agent` at the path `/flatfiles/<lab files>`.  

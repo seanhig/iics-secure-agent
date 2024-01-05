@@ -25,7 +25,8 @@ services:
     ports:
       - 1433:1433
     volumes:
-      - sql-server-volume:/var/opt/mssql
+      - "./backups:/var/backups"
+      - sql-server-volume2:/var/opt/mssql
 
   mysql:
     image: mysql:latest

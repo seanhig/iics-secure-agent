@@ -5,4 +5,6 @@ flatfiles/**
 !flatfiles/README.md
 !flatfiles/Sales.csv
 **/.DS_Store
+backups/**
+!backups/README.md
 
